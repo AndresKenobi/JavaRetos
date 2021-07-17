@@ -126,7 +126,7 @@ public class Practica {
                 catch(ArrayIndexOutOfBoundsException | ArithmeticException ex) {
                 System.out.println ("Error de índice en un array");}
           */
-          
+          System.out.print("Hemos realizado un cambio 01");
           
           
           

@@ -39,7 +39,7 @@ public class Inversiones {
     public static void main(String[] args) {
         // Imprimir resultado
         System.out.println(validarInversion(12,2000000,0.05));
-        
+        System.out.print("Hemos realizado un cambio 02");
         
         
     }
