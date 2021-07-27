@@ -1,0 +1,104 @@
+Git: Sistema de control de versiones
+controla o administra las distintas versiones (cambios) de un programa.
+Podemos coordinar trabajos con otros desarrolladores en un mismo proyecto.
+Podemos ver quien y cuando hace cambios.
+Podemos revertir los cambios realizados.
+Podemos elaborar repositorios locales y remotos(on line).
+
+Conceptos de Git:
+1. Ofrece el rastreo de la historia de tu codigo
+2. Toma "snapshots" de tus archivos
+3. Tu decides cuando hacer snapshots cuando haces un "commit"
+4. Tu puedes visitar cualquier snapshot en cuando quieras
+5. tu puedes crear etapas antes de (commiting) cometerlas/realizarlas/prepararlas
+
+Etapas de trabajo
+Working directory (carpetas locales)---> git add ---> Staging area (area de etapas/estados)
+Staging area (area de etapas)---> git commit ---> Repository
+
+Comandos Basicos (ejecutar en el Git Bash o consola de Git)
+
+*Para iniciar el repositorio...
+*Ubicarse en la carpeta donde estan los archivos/click derecho/Git Bash Here
+
+git init: iniciar un nuevo proyecto en Git - para crear un repositorio
+git add <file>: anexar archivos al Staging area (uno por uno)
+(Se debe anexar la extension de los archivos)
+git add .: anexa todos los archivos que esten en la carpeta (working directory)
+git status: Saber en que estado estan mis archivos o en que etapa
+git commit -m: Crear los snapshots de los archivos antes de pasar al repositorio
+(la foto de tu version del codigo en ese instante)(el comentario va entre comillas)
+
+**Quien eres tu?** Para primera vez en Git, configurar correo y usuario:
+git config --globar user.name "Your Name"
+git config --globar user.email "Youremail@example.com"
+
+git push: es para subirlo a un repositorio remoto
+git pull: Te trae los cambios que han hecho los otros desarrolladores
+(Los que tengan acceso)
+git clone: Hace una copia de los archivos desde el servidor hacia tu computador
+git log: Permite ver todos los commits que hemos creado ("los hash")
+(Los hash diferencian cada commit/snapshots)
+git checkout --<nombrearchivo.extension>: para revertir los cambios en los archivos
+(esto es una vez hecho el commit y haber hecho un cambio en el editor de codigo)
+git diff <nombrearchivo.extension>: nos muestra un resumen corto de los cambios
+realizados en el archivo.
+	- resta: lo que he quitado de ese archivo
+	+ suma: lo que he agregado
+**nota: si deseo agregar estos nuevos cambios debo hacer de nuevo...
+	git add <file>
+	git commit -m
+
+**Ignorar otros archivos/carpetas que estan en misma ubicacion del proyecto
+Es cuando queremos ignorar otros archivos o carpetas que no queremos ver o tener en cuenta
+
+Desde el editor: creamos un archivo con el nombre .gitignore
+		En ese archivo ponemos los nombres de los archivos que queremos
+		que Git NO tenga en cuenta para crear nuestro repositorio
+Desde el comand prompt: 
+	Create the text file gitignore.txt.
+	Open it in a text editor and add your rules, then save and close.
+	Hold SHIFT, right click the folder you're in, then select Open command window here.
+	Then rename the file in the command line, with ren gitignore.txt .gitignore.
+Desde el mismo Git Bash:
+	git touch .gitignore
+**nota: Una vez haber nombrado en este archivo los nombres de los archivos
+	y su extension, y/o los nombres de las carpetas que no queremos ver
+	debemos anexar este archivo y crear su respectivo commit/snapshot...
+	git add .gitignore
+	git commit -m "message" .gitignore
+
+git branch: lista las particiones o versiones alternativas de todo el proyecto segun tengamos
+git branch <nombre>: creamos una nueva version del proyecto
+	Para moverme dentro de esta nueva version:
+	git checkout <nombre>
+
+Para recuperar o descargar archivos..
+1. Descargar un Zip desde el repositorio 
+2. Abrir el Git Bash
+	Ubicar la carpeta de trabajo (pwd, cd <carpeta>)
+	git clone <direccion del repositorio>
+
+git remote add origin <https://ejemplo.com>: Una vez creado nuestro nuevo repositorio
+	en GitHub, anexamos la direccion de la pagina para crear nuestro repositorio remoto.
+git push -u origin <version>: Una vez creado el repositorio, debemos llenarlo con los 
+	archivos segun la version del proyecto que estemos trabajando.
+
+**nota: Si es primera vez en ese repositorio te da a pedir autenticacion de GitHub
+	Usuario y contraseña.
+
+*Desde GitHub..
+
+Una vez creado nuestro repositorio creamos nuestro archivo README.md
+Le damos la descripcion de nuestro proyecto
+
+
+Otros comandos
+ls: lista los directorios y archivos
+pwd: para ver en que ruta de nuestro sistema esta posicionado nuestra consola (Bash)
+cd <carpeta>: nos da acceso a esa carpeta
+
+
+
+
+
