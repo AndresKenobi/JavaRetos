@@ -36,31 +36,31 @@ public class Bebidas extends ProductosAlimentarios{
             this.lugarOrigen = lugarOrigen;
         }
     
-    public Boolean comprobarLugarOrigen(char lugarOrigen){
+    public void comprobarLugarOrigen(char lugarOrigen){ //void cambiado boolean
     // Condicion validar lugar de origen N,I   
         
         Boolean respuesta = false;
         
-        if (lugarOrigen == 'N' ||lugarOrigen == 'n') {
+        if (lugarOrigen == 'N' /*||lugarOrigen == 'n'*/) {
                 respuesta = true;
             }
-        if (lugarOrigen == 'I' ||lugarOrigen == 'i') {
+        if (lugarOrigen == 'I' /*||lugarOrigen == 'i'*/) {
                 respuesta = false;
             }     
-                return respuesta;          
+//                return respuesta;          
                 
         }
     
     @Override
     public Double calcularPrecio(){
     // Codigo calcular precio final
-        Double adicion = (comprobarLugarOrigen(lugarOrigen)) ? 5.0 :  15.0;
+        Integer adicion = (lugarOrigen == 'N' /*||lugarOrigen == 'n'*/) ? 5 :  10;
         
-        var precioFinal2 = super.calcularPrecio(); 
+        Double precioFinal = super.calcularPrecio(); 
         
-        precioFinal2 = precioFinal2 + adicion;
+        precioFinal = precioFinal + adicion;
         
-        return precioFinal2;
+        return precioFinal;
         
         }
     

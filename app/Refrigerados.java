@@ -40,7 +40,7 @@ public class Refrigerados extends ProductosAlimentarios {
     public Double calcularPrecio(){
     //Codigo calcular precio final
     
-        Double precioFinal3 = super.calcularPrecio(); 
+        Double precioFinal = super.calcularPrecio(); 
         Double adicion = 0.0;
         
         if (temperatura >= 5 & temperatura < 10) {
@@ -49,12 +49,12 @@ public class Refrigerados extends ProductosAlimentarios {
         else if (temperatura >= 10 & temperatura <= 15) {
                 adicion += 18;
             }
-        else if (temperatura > 15) {
+        else if (temperatura < 5 || temperatura > 15) {
                 adicion += 5; //
             }
         
-        precioFinal3 = precioFinal3 + adicion;
-        return precioFinal3;
+        precioFinal = precioFinal + adicion;
+        return precioFinal;
         
     }
     

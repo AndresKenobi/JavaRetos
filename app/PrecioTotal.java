@@ -13,7 +13,7 @@ public class PrecioTotal {
     private Double tProductosAlimentarios;
     private Double tBebidas;
     private Double tRefrigerados;
-    private ProductosAlimentarios[] listaProductosAlimentarios; //Que es una lista tipo Clase Productos Alimentarios????
+    private ProductosAlimentarios[] listaProductosAlimentarios; //
        
     // Constructores
     

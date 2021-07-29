@@ -13,9 +13,9 @@ public class ProductosAlimentarios {
     private final Integer PESO_BASE = 5;
     private final char TIPO_ALIMENTO = 'N';
     
-    public Double precioBase; //se cambia a public, No se puede acceder a los atributos en las subclases
-    public Integer pesoBase;
-    public char tipoAlimento;
+    protected Double precioBase; //se cambia a public, No se puede acceder a los atributos en las subclases
+    protected Integer pesoBase;
+    protected char tipoAlimento;
         
     // Constructores
     
@@ -40,7 +40,7 @@ public class ProductosAlimentarios {
             this.tipoAlimento = tipoAlimento;
         }
     
-    public Boolean comprobarTipoAlimento(char tipoAlimento){ // Se cambia void porque necesitamos un valor
+    public void comprobarTipoAlimento(char tipoAlimento){ // Se cambia void porque necesitamos un valor
     // Condicion validar tipo de alimento N,C        
         
         Boolean respuesta = false;
@@ -50,14 +50,14 @@ public class ProductosAlimentarios {
         if (tipoAlimento == 'C' ||tipoAlimento == 'c') {
                 respuesta = false;
             }     
-                return respuesta;
+//                return respuesta;
            
         }
     
     public Double calcularPrecio(){
     // Codigo calcular precio final
     
-        Integer adicion = (comprobarTipoAlimento(tipoAlimento)) ? 40 :  20;
+        Integer adicion = (tipoAlimento == 'N' /*|| tipoAlimento == 'n'*/) ? 40 :  20;
         
         if (pesoBase >= 0 & pesoBase <= 9){ //pesoBase porque es el atributo, peso es el parametro
                 adicion += 6;

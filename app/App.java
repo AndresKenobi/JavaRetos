@@ -28,7 +28,7 @@ public class App {
         listaProductosAlimentarios2[2] = new Bebidas();
         listaProductosAlimentarios2[3] = new Refrigerados();
         listaProductosAlimentarios2[4] = new Bebidas(230.0,70);
-        listaProductosAlimentarios2[5] = new Refrigerados(40.2,50,16); //se cambia 4 * 16 en el param temp
+        listaProductosAlimentarios2[5] = new Refrigerados(40.2,50,4); //se cambia 4 * 16 en el param temp
         listaProductosAlimentarios2[6] = new Refrigerados(130.2,150,9);
         listaProductosAlimentarios2[7] = new Bebidas(103.3,77,'N');
         listaProductosAlimentarios2[8] = new Refrigerados(143.2,190,12);
