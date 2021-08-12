@@ -1,0 +1,48 @@
+SELECT Fecha as "Fecha Compra", ID_Compra as "Cod. Compra", Proveedor as "Nombre Proveedor", Pagado
+FROM Compra 
+--WHERE "Cod. Compra" <= 10  no son los primeros 10????
+ORDER BY "Cod. Compra" DESC
+LIMIT 10
+
+SELECT p.Fecha_Inicio as "Fec Inicio", p.Constructora as "Nombre Constructora", p.Ciudad as "Nombre Ciudad",
+		l.Nombre ||" "||l.Primer_Apellido as "Nombre Lider", 
+		t.Codigo_Tipo as "Cod. Tipo", t.Estrato 
+FROM ((Proyecto p
+INNER JOIN Lider l ON p.ID_Lider = l.ID_Lider) 
+INNER JOIN Tipo t ON p.ID_Tipo = t.ID_Tipo )
+WHERE Fecha_Inicio >= "2019-09-01" AND Fecha_Inicio <= "2019-09-09" AND Ciudad ="Pereira"
+
+SELECT COUNT(p.ID_Proyecto) as "Numero Proyecto"
+FROM Proyecto p
+WHERE ((p.Fecha_inicio >= "29-12-12")
+AND NOT EXIST(SELECT 1 FROM Lider l WHERE ( l.ID_Lider = p.ID_Lider) AND (l.ID_Lider = 6))
+AND NOT EXIST(SELECT 1 FROM Compra c WHERE ( c.ID_Proyecto = p.ID_Proyecto) AND (c.MaterialConstruccion = 1)
+AND EXISTS (SELECT 1 FROM Compra c WHERE ( c.ID_Proyecto = p.ID_Proyecto) AND (c.MaterialConstruccion = 7))))
+
+
+**OPCIONAL**
+SELECT COUNT(DISTINCT P.ID_Proyecto) as "Numero Proyectos"	
+FROM Proyecto p
+INNER JOIN Compra c ON p.ID_Proyecto = c.ID_Proyecto 
+--INNER JOIN Lider l ON p.ID_Lider = l.ID_Lider
+WHERE p.Fecha_Inicio >= "2019-12-12" 
+	--AND p.Acabados = "Si"
+	AND p.ID_Lider != 7 --Se cambia a 7????
+	--AND c.ID_MaterialConstruccion !=1 
+	--AND c.ID_MaterialConstruccion != 7
+
+
+--SELECT CONCAT(SUBSTR(l.Nombre,1,1),SUBSTR(l.Primer_Apellido ,1,1),SUBSTR(l.Segundo_Apellido ,1,1)) AS "Abrev"
+--SELECT SUBSTRING(l.Nombre,1,1)||SUBSTRING(l.Primer_Apellido ,1,1)||SUBSTRING(l.Segundo_Apellido ,1,1) as "Abrev"
+SELECT SUBSTR(l.Nombre,1,1)||SUBSTR(l.Primer_Apellido ,1,1)||SUBSTR(l.Segundo_Apellido ,1,1) as "Abrev"
+FROM Lider l
+
+SELECT p.Constructora, SUM(l.Salario) AS "Salario Lider"
+FROM Proyecto p 
+--WHERE "Salario Lider" > 31000000 AND "Salario Lider" < 34000000
+INNER JOIN Lider l ON p.ID_Lider = l.ID_Lider
+GROUP BY p.Constructora
+--WHERE "Salario Lider" > "31000000" AND "Salario Lider" < "34000000"
+--ORDER BY "Salario Lider" DESC 
+HAVING SUM(l.Salario) > 31000000 AND SUM(l.Salario) < 34000000
+
